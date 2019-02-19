@@ -1,4 +1,3 @@
-/*jshint esversion: 6*/
 const startupDebugger = require('debug')('app:startup');
 const express = require('express');
 const logger = require('./middlewares/logger');
@@ -34,9 +33,11 @@ if (app.get('env') === 'development') {
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 console.log(`app: ${app.get('env')}`);
 
+
 //Using Routers
 app.use('/api/courses', courses);
 app.use('/', home);
+
 
 //Templating Engine, NOT imp rn.
 app.set('view engine', 'pug');

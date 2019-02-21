@@ -33,7 +33,6 @@ displayCommits();
 
 console.log('After');
 
-
 function getUser(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -49,10 +48,9 @@ function getRepositories(username) {
         setTimeout(() => {
             console.log('Getting repos...');
             // resolve(['repo1', 'repo2', 'repo3']);
-            reject(new Error('Could not get repos.'));
+            reject(new Error('Could not get repos.'));  
         }, 2000);
     });
-    
 }
 
 function getCommits(repo) {

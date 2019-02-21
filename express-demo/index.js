@@ -9,6 +9,7 @@ const home = require('./routes/home');
 
 //Starting Web Server
 const app = express();
+
 //Calling Middleware Functions :
 //Inbuilt middleware
 app.use(express.json());

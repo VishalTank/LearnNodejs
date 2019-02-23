@@ -1,4 +1,3 @@
-
 function ex() {
     console.log('hello');
 }
@@ -6,25 +5,14 @@ ex();
 
 
 //promise
-getUser1(1)
-.then((user) => {
-    console.log('User: ', user);
-    getRepos1(user.uName);
-})
-.then((repos1) => {
-    console.log(repos1);
-    getCommits1(repos1[0]);
-})
-.then((commits1) => {
-    console.log(commits1);
-})
-.catch((error) => console.log(error.message));
-
 function getUser1(id) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             console.log('fetching user1...');
-            resolve({ id: id, uName: 'Chirag' });
+            resolve({
+                id: id,
+                uName: 'Chirag'
+            });
         }, 5000);
     });
 }
@@ -47,8 +35,21 @@ function getCommits1(repos1) {
     });
 }
 
+getUser1(1).then((user1) => {
+    console.log('User: ', user1);
+    return getRepos1(user1.uName);
+}).then((repos1) => {
+    console.log(repos1);
+    return getCommits1(repos1[0]);
+}).then((commits1) => {
+    console.log(commits1);
+}).catch((error) => {
+    console.log(error.message);
+});
 
-//callback
+
+
+// callback
 getUser(0, (user) => {
     console.log('User: ', user);
 
@@ -65,14 +66,17 @@ function getUser(id, callback) {
     setTimeout(() => {
         console.log('fetching user...');
         //result
-        callback( { id: id, uName: 'Vishal' } );
+        callback({
+            id: id,
+            uName: 'Vishal'
+        });
     }, 5000);
 }
 
 function getRepos(uName, callback) {
     setTimeout(() => {
         console.log('fetching repos...');
-        callback( ['repo1', 'repo2', 'repo3'] );
+        callback(['repo1', 'repo2', 'repo3']);
     }, 5000);
 }
 
